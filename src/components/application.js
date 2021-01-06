@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Draggable from 'react-draggable'
 import TitleBar from './title-bar'
 import Toolbar from './tool-bar'
+import isMobile from '@src/is-mobile'
 import { useStore } from '@src/context'
 import { observer} from 'mobx-react-lite'
 import Computer from '@applications/computer'
@@ -18,7 +19,7 @@ const ApplicationContainer = styled.div`
     z-index: 7;
     flex-direction: column;
     height:${props => props.maximized ? "96.2%" : "70%"};
-    width: ${props => props.maximized ? "100%" : "70%"};
+    width: ${props => props.maximized ? "100%" : "80%"};
     .window {
         padding: 0;
         box-shadow: none;
@@ -84,7 +85,7 @@ const Application = observer((props) => {
     }
     return ( 
         <Draggable 
-            disabled={props.resized}
+            disabled={props.resized || isMobile()}
             position={props.position}>
             <ApplicationContainer
                 onClick={() => ApplicationStore.setTopElement(props.id)}

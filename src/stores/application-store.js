@@ -32,7 +32,6 @@ class ApplicationStore {
         makeAutoObservable(this)
     }
 
-
     setTopElement = (key, value = this.topIndex + 1) => {
         const labels = document.getElementsByClassName('react-draggable')
         const matchingLabels = Array.prototype.filter.call(
@@ -115,7 +114,7 @@ class ApplicationStore {
                     this.applications['computer'].open = true
                     this.chosenKey = key
                 } else if(!this.applications[key].open) {
-                    if(isMobile && this.openApps.length > 0) {
+                    if(isMobile() && this.openApps.length > 0) {
                         this.openMessage(oneDeviceMessage)
                     } else {
                         this.applications[key].open = true
