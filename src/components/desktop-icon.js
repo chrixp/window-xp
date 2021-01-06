@@ -37,18 +37,23 @@ const DesktopIconDesc = styled.p`
 `
 
 const DesktopIcon = observer((props) => {
-    const DesktopIconContent = () => (
-        <DesktopIconContainer x={props.x} y={props.y} onClick={props.onClick}>
+    if(!isMobile()) {
+        return (
+            <Draggable>
+                <DesktopIconContainer x={props.x} y={props.y} onClick={props.onClick}>
                 <DesktopIconImage width={props.width} clicked={props.clicked} src={imageLink(props.img)} alt="" />
                 <DesktopIconDesc clicked={props.clicked}>{props.desc}</DesktopIconDesc>
-        </DesktopIconContainer>
-    )
-    if(isMobile()) {
-        return <Draggable><DesktopIconContent /></Draggable>
+                </DesktopIconContainer>
+            </Draggable>
+        )
     } else {
-        return <DesktopIconContent />
+        return (
+            <DesktopIconContainer x={props.x} y={props.y} onClick={props.onClick}>
+                <DesktopIconImage width={props.width} clicked={props.clicked} src={imageLink(props.img)} alt="" />
+                <DesktopIconDesc clicked={props.clicked}>{props.desc}</DesktopIconDesc>
+            </DesktopIconContainer>
+        )
     }
-
 })
 
 export default DesktopIcon
