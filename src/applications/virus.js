@@ -7,19 +7,18 @@ import { useStore } from '@src/context'
 import { observer} from 'mobx-react-lite'
 const evilLaugh = new Audio(EvilLaugh)
 
-
 const movingAround = keyframes`
     0% {
-        transform: rotate(0deg) translate(0px) skewY(0deg);
+        transform: rotate(0deg) translate(0px) scale(1);
     }
-    50% {
-        transform: rotate(25deg) translate(40px) skewY(14deg);
+    35% {
+        transform: rotate(25deg) translate(140px) scale(0.2);
     }
-    75% {
-        transform: rotate(-40deg) translate(70px) skewY(150deg);
+    60% {
+        transform: rotate(-40deg) translate(40px) scale(1.8);
     }
     100% {
-        transform: rotate(180deg) translate(170px) skewY(75deg);
+        transform: rotate(180deg) translate(80px) scale(1);
     }
 `
 
@@ -83,7 +82,6 @@ const Virus = observer(() => {
         if(viruses.length < 40) {
             setTimeout(() => {
                 const newViruses = [...viruses]
-                console.log(viruses)
                 newViruses.push({ x: getRandomInteger(1,100), y: getRandomInteger(1, 100)})
                 setViruses(newViruses) 
             }, 80)
@@ -91,16 +89,17 @@ const Virus = observer(() => {
             setDone(true)
             runVirus()
         }
-        
     }
+
     useEffect(() => {
         if(!played) {
-            setPlayed(true)
             evilLaugh.play()
+            setPlayed(true)
+            ApplicationStore.setTopElement('virus', 999)
         }
-        ApplicationStore.setTopElement('virus', 999)
+
         generateViruses()
-    },[viruses, played])
+    },[viruses])
     return (
         <VirusBackground done={done}>
             <canvas className='hacker-3d-shiz'></canvas>

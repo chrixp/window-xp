@@ -8,7 +8,6 @@ import ClickableApp from './clickable-app'
 import { menuApplications } from '@src/consts'
 import { useStore } from '@src/context'
 import { observer} from 'mobx-react-lite'
-import Application from './application'
 
 const UserImage = styled.img`
     width: 45px;

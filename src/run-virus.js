@@ -114,8 +114,7 @@ const runVirus = () => {
         focal = canvas.width / 2,
         vpx = canvas.width / 2,
         vpy = canvas.height / 2,
-        barVals = [],
-        sineVal = 0;
+        barVals = []
 
     /* fake console stuff */
     var commandStart = ['Performing DNS Lookups for', 
