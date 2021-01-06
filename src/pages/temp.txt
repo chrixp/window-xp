@@ -1,0 +1,121 @@
+import React from 'react'
+import Wallpaper from '../images/wallpaper.jpg'
+import styled from 'styled-components'
+import Taskbar from '../components/task-bar'
+import DesktopIcon from '../components/desktop-icon'
+import Application from '../components/application'
+import {
+    defaultOpenApplicationProperties,
+    defaultPosition,
+    defaultApplicationState
+} from '../consts'
+import { useStore } from '../context'
+import { observer} from 'mobx-react-lite'
+
+const HomeScreen = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+`
+
+const WallpaperContainer = styled.div`
+    z-index: 1;
+    background-image: url(${Wallpaper});
+    background-size: cover;
+    width: 100%;
+    height: 97%;
+`
+
+
+class App extends React.Component {
+  state = {
+    applications: defaultApplicationState,
+  } 
+
+  unclickEverything = () => {
+    const applications = {...this.state.applications}
+    Object.keys(applications).forEach(key => {
+        applications[key].clicked = false
+    })
+    this.setState({ applications })
+  }
+
+  onClick = (key) => {
+    const applications = {...this.state.applications}
+    // Handle double click
+    const newLastClicked = new Date().getTime()
+    const oldlastClicked = applications[key].lastClicked
+    if(newLastClicked - oldlastClicked < 400) {
+        this.openApplication(key)
+    }
+    applications[key].lastClicked = newLastClicked
+
+    // Unclick everything and toggle clicked on the clicked icon
+    Object.keys(applications).forEach(applicationKey => {
+        applications[applicationKey].clicked = applicationKey === key ? !applications[applicationKey].clicked : false
+    })
+    this.setState({ applications })
+   }
+
+    openApplication = (key) => {
+        const applications = {...this.state.applications}
+        if(!applications[key].open) {
+            applications[key].open = true
+            this.setState({ applications })
+        }
+    }
+
+    minimizeApplication = (key) => {
+        const applications = {...this.state.applications}
+        applications[key].minimized = !applications[key].minimized
+        this.setState({ applications })
+    }
+
+    closeApplication = (key) => {
+        const applications = {...this.state.applications}
+        Object.assign(applications[key], defaultOpenApplicationProperties)
+        this.setState({ applications })
+    }
+
+    resize = (key) => {
+        const applications = {...this.state.applications}
+        applications[key].position = applications[key].resized === false ? defaultPosition : null
+        applications[key].resized  = !applications[key].resized
+        this.setState({ applications })
+    }
+
+  render () {
+    const applications = Object.keys(this.state.applications).reduce((prev, cur) => ([
+        ...prev,
+        {
+            ...this.state.applications[cur],
+            key: cur
+        }
+    ]), [])
+    const openApplications = applications.filter(application => application.open)
+    const unminimizedOpenApplications= openApplications.filter(application => !application.minimized)
+    return (
+        <HomeScreen>
+            <WallpaperContainer onClick={this.unclickEverything} />
+            {applications.map((application) => (
+                <DesktopIcon 
+                    key={application.key}
+                    onClick={() => this.onClick(application.key)}
+                    {...application} />))}
+            {unminimizedOpenApplications.map((application) => (
+                <Application
+                    minimize={() => this.minimizeApplication(application.key)} 
+                    resize={() => this.resize(application.key)}
+                    close={() => this.closeApplication(application.key)}
+                    {...application}
+                />
+            ))} 
+            <Taskbar openApplications={openApplications} />
+        </HomeScreen>
+      );
+  }
+  
+}
+
+export default App;

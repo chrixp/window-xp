@@ -1,0 +1,41 @@
+@font-face {
+    font-family: "Segue";
+    src: url('./assets/fonts/Segoe\ UI.woff')
+   }
+
+@font-face {
+font-family: "Tahoma";
+src: url('./assets/fonts/Tahoma\ Regular\ font.ttf')
+}
+
+@font-face {
+    font-family: "Noto";
+    src: url('./assets/fonts/NotoSans-Regular.ttf')
+}
+
+@font-face {
+    font-family: 'Source Code Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Code Pro'), local('SourceCodePro-Regular'), url(http://themes.googleusercontent.com/static/fonts/sourcecodepro/v4/mrl8jkM18OlOQN8JLgasDxM0YzuT7MdOe03otPbuUS0.woff) format('woff');
+  }
+  
+
+body, html, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family:  'Tahoma';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+* {
+    box-sizing: border-box;
+}
