@@ -30,20 +30,22 @@ const WallpaperContainer = styled.div`
 const HomeScreen = observer(() => {
     const { ApplicationStore } = useStore()
     const { visibleApps, openApps } = ApplicationStore
-    
+
     useEffect(() => {
-        (async () => {
-            const sound = new Audio(WindowStartupSound)
-            await sound.play()
-
-            if(isMobile) {
-                runInAction(() => {
-                    ApplicationStore.openMessage(warningMessage, 'warning')
-                })
-            }
-        })()
-    }, [])
-
+        const playSound = async () => {
+            (async () => {
+                const sound = new Audio(WindowStartupSound)
+                await sound.play()
+    
+                if(isMobile) {
+                    runInAction(() => {
+                        ApplicationStore.openMessage(warningMessage, 'warning')
+                    })
+                }
+            })()
+        }
+       playSound()
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 
     return (

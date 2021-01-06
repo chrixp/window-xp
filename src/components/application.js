@@ -64,7 +64,7 @@ const Application = observer((props) => {
 
     useEffect(() => {
         ApplicationStore.setTopElement(props.id)
-    }, [])
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     const renderApplication = () => {
         switch (props.type) {

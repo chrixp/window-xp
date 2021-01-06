@@ -99,7 +99,7 @@ const Virus = observer(() => {
         }
 
         generateViruses()
-    },[viruses])
+    },[viruses]) // eslint-disable-line react-hooks/exhaustive-deps
     return (
         <VirusBackground done={done}>
             <canvas className='hacker-3d-shiz'></canvas>
