@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import imageLink from '@src/image-link'
 import Draggable from 'react-draggable'
 import { observer } from 'mobx-react-lite'
+import isMobile from '@src/is-mobile'
 
 const DesktopIconContainer = styled.div`
     position: absolute; 
@@ -36,14 +37,18 @@ const DesktopIconDesc = styled.p`
 `
 
 const DesktopIcon = observer((props) => {
-    return (
-        <Draggable>
-            <DesktopIconContainer x={props.x} y={props.y} onClick={props.onClick}>
+    const DesktopIconContent = () => (
+        <DesktopIconContainer x={props.x} y={props.y} onClick={props.onClick}>
                 <DesktopIconImage width={props.width} clicked={props.clicked} src={imageLink(props.img)} alt="" />
                 <DesktopIconDesc clicked={props.clicked}>{props.desc}</DesktopIconDesc>
-            </DesktopIconContainer>
-        </Draggable>  
+        </DesktopIconContainer>
     )
+    if(isMobile()) {
+        return <Draggable><DesktopIconContent /></Draggable>
+    } else {
+        return <DesktopIconContent />
+    }
+
 })
 
 export default DesktopIcon

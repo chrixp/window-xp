@@ -34,14 +34,16 @@ const WindowXPImage = styled.img`
 
 const SignInImage = styled.img`
     width: 70px;
-    object-fit: contain;
+    height: 70px;
     border: 1.3px solid rgba(255,255,255,0.8);
     border-radius: 5px;
     @media (max-width: 800px) {
         width: 50px
+        height: 50px;
     }
     @media (max-width: 500px) {
-        width: 40px
+        width: 40px;
+        height: 40px;
     }
 
 ` 

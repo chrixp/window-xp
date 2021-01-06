@@ -4,7 +4,7 @@ import {
     defaultPosition,
     defaultApplicationState
 } from '../consts'
-import { isMobile } from 'react-device-detect'
+import isMobile from '@src/is-mobile'
 import { pick } from 'lodash'
 import consumifyObject from '@utils/consumify-object'
 import { APP_TYPES } from '@src/consts'

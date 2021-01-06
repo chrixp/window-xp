@@ -8,10 +8,7 @@ import Error from '@components/error'
 import WindowStartupSound from '@sounds/windows-xp-startup.mp3'
 import { useStore } from '@src/context'
 import { observer} from 'mobx-react-lite'
-import { runInAction } from 'mobx'
-import { isMobile } from 'react-device-detect'
 
-const warningMessage = "Your access is restricted on a mobile device. You are not allowed to use laptop icons and can only open one application at a time through the menu. Navigate to laptop for full access"
 const HomeScreenContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -36,12 +33,6 @@ const HomeScreen = observer(() => {
             (async () => {
                 const sound = new Audio(WindowStartupSound)
                 await sound.play()
-    
-                if(isMobile) {
-                    runInAction(() => {
-                        ApplicationStore.openMessage(warningMessage, 'warning')
-                    })
-                }
             })()
         }
        playSound()
