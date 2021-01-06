@@ -36,7 +36,7 @@ const TaskBarIconContainer = styled.div`
 const TaskBarIcon = observer((props) => {
     const { ApplicationStore } = useStore()
     return (
-        <TaskBarIconContainer onClick={() => ApplicationStore.minimizeApplication(props.id)}>
+        <TaskBarIconContainer onClick={() => ApplicationStore.smartMinimizeApplication(props.id)}>
             <Icon src={imageLink(props.img)} />
             <TaskBarIconText>{props.desc}</TaskBarIconText>
         </TaskBarIconContainer>

@@ -62,10 +62,9 @@ const IFrame = styled.iframe`
 
 const Application = observer((props) => {    
     const { ApplicationStore } = useStore()
-
     useEffect(() => {
         ApplicationStore.setTopElement(props.id)
-    }, []) // eslint-disable-line react-hooks/exhaustive-deps
+    },[]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const renderApplication = () => {
         switch (props.type) {

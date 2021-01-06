@@ -41,6 +41,9 @@ class ApplicationStore {
         if(matchingLabels.length > 0 && parseInt(matchingLabels[0].style.zIndex) !== parseInt(this.topIndex)) {
             this.topIndex = value
             matchingLabels[0].style.zIndex = value 
+            return true
+        } else {
+            return false
         }
     }
 
@@ -112,6 +115,7 @@ class ApplicationStore {
                     this.back = this.chosenKey
                     this.next = null
                     this.applications['computer'].open = true
+                    this.unminimizeApplication('computer')
                     this.chosenKey = key
                 } else if(!this.applications[key].open) {
                     if(isMobile() && this.openApps.length > 0) {
@@ -119,15 +123,32 @@ class ApplicationStore {
                     } else {
                         this.applications[key].open = true
                     }
-                } else if(this.applications[key].minimized) {
-                    this.minimizeApplication(key)
+                } 
+
+                if(this.applications[key].open === true) {
+                    this.unminimizeApplication(key)           
                 }
+        }
+    }
+
+    unminimizeApplication = (key) => {
+        this.applications[key].minimized = false
+        this.setTopElement(key)
+    }
+
+    // Only minimize if application is not at the top
+    smartMinimizeApplication = (key) => {
+        // If application is already minimized toggle it
+        if(this.applications[key].minimized) {
+            this.applications[key].minimized = false
+            this.setTopElement(key)
+        } else if(!this.setTopElement(key)){
+            this.applications[key].minimized = true
         }
     }
 
     minimizeApplication = (key) => {
         this.applications[key].minimized = !this.applications[key].minimized
-        this.setTopElement(key)
     }
 
     closeApplication = (key) => {
