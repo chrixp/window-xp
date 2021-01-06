@@ -169,7 +169,7 @@ const baseApplicationState = {
     },
     website: {
         img: 'chris-icon.png',
-        link: 'https://nqp16001.github.io',
+        link: 'https://amazing-franklin-2833fa.netlify.app',
         desc: 'Old Website',
         width: 100,
         y: 1,

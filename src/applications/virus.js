@@ -84,7 +84,7 @@ const Virus = observer(() => {
                 const newViruses = [...viruses]
                 newViruses.push({ x: getRandomInteger(1,100), y: getRandomInteger(1, 100)})
                 setViruses(newViruses) 
-            }, 80)
+            }, 140)
         } else {
             setDone(true)
             runVirus()
