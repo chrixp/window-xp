@@ -169,7 +169,7 @@ const baseApplicationState = {
     },
     website: {
         img: 'chris-icon.png',
-        link: 'http://chrisphan.net',
+        link: 'https://nqp16001.github.io',
         desc: 'Old Website',
         width: 100,
         y: 1,
