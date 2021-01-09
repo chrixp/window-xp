@@ -199,7 +199,7 @@ const baseApplicationState = {
         height: 530,
         x: 120,
         y: 490,
-        desc: "Solitare",
+        desc: "Spider Solitare",
         type: APP_TYPES.WIDGET
     },
     mine: {

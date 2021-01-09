@@ -69,9 +69,8 @@ const IFrame = styled.iframe`
 `
 
 const Application = observer((props) => {    
-    console.log(props)
     const { width, height } = props
-    const defaultSize = width !== null && height !== null
+    const defaultSize = width !== undefined && height !== undefined
     const { ApplicationStore } = useStore()
     useEffect(() => {
         ApplicationStore.setTopElement(props.id)
@@ -95,7 +94,7 @@ const Application = observer((props) => {
     }
     return ( 
         <Draggable 
-            disabled={props.resized || isMobile()}
+            disabled={(props.resized && !defaultSize) || isMobile()}
             position={props.position}>
             <ApplicationContainer
                 onClick={() => ApplicationStore.setTopElement(props.id)}

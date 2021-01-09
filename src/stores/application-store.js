@@ -170,7 +170,7 @@ class ApplicationStore {
     }
 
     get menuApps () {
-        const menuKeys = ['computer','work','social','paint','website','notepad','resume','virus']
+        const menuKeys = ['computer','mine','spider','paint','website','notepad','resume','virus']
         const pickedItems = pick(this.applications, menuKeys)
         return consumifyObject(pickedItems)
     }
