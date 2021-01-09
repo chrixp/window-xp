@@ -171,9 +171,9 @@ const baseApplicationState = {
         img: 'chris-icon.png',
         link: 'https://amazing-franklin-2833fa.netlify.app',
         desc: 'Old Website',
-        width: 100,
+        iconWidth: 60,
         y: 1,
-        x: 100,
+        x: 110,
         type: APP_TYPES.WIDGET
     },
     resume : {
@@ -191,6 +191,27 @@ const baseApplicationState = {
         x: 130,
         bars: ['File','Edit','Format','View','Help'],
         type: APP_TYPES.NOTEPAD
+    },
+    spider: {
+        img: 'spider.png',
+        link: "https://www.squidbyte.com/games/spidersolitairewindowsxp/",
+        width: 800,
+        height: 530,
+        x: 120,
+        y: 490,
+        desc: "Solitare",
+        type: APP_TYPES.WIDGET
+    },
+    mine: {
+        img: 'mine.png',
+        link: "https://mines.now.sh/",
+        iconWidth: 30,
+        width: 800,
+        height: 530,
+        x: 5,
+        y: 500,
+        desc: "Minesweeper",
+        type: APP_TYPES.WIDGET
     },
     virus: {
         img: 'virus.png',

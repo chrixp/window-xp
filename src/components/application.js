@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import Draggable from 'react-draggable'
 import TitleBar from './title-bar'
 import Toolbar from './tool-bar'
@@ -20,6 +20,14 @@ const ApplicationContainer = styled.div`
     flex-direction: column;
     height:${props => props.maximized ? "96.2%" : "70%"};
     width: ${props => props.maximized ? "100%" : "80%"};
+    ${props => props.defaultSize === true && css`
+        width: ${props.width}px;
+        height: ${props.height}px;
+        .title-bar-controls button:nth-child(2) {
+            opacity: 0.5;
+            user-select: none;
+        }
+    `}
     .window {
         padding: 0;
         box-shadow: none;
@@ -61,6 +69,9 @@ const IFrame = styled.iframe`
 `
 
 const Application = observer((props) => {    
+    console.log(props)
+    const { width, height } = props
+    const defaultSize = width !== null && height !== null
     const { ApplicationStore } = useStore()
     useEffect(() => {
         ApplicationStore.setTopElement(props.id)
@@ -88,6 +99,9 @@ const Application = observer((props) => {
             position={props.position}>
             <ApplicationContainer
                 onClick={() => ApplicationStore.setTopElement(props.id)}
+                width={width}
+                height={height}
+                defaultSize={defaultSize}
                 className={props.id}
                 minimized={props.minimized} 
                 maximized={props.resized}>

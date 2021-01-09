@@ -107,6 +107,10 @@ const MenuItemImage = styled.img`
 
 const Menu = observer(() => {
     const { ApplicationStore } = useStore()
+    const logOff = () => {
+        console.log("CALLED")
+        window.location.href = `${window.location.origin}/authenticate` 
+    }
 
     const restartPage = () => {
         window.location.href = window.location.origin
@@ -136,9 +140,8 @@ const Menu = observer(() => {
                 </MenuContentRight>
             </MenuContent>
             <MenuBottom>
-                <MenuBottomButton>
+                <MenuBottomButton onClick={() =>  logOff()}>
                     <MenuItemImage 
-                        onClick={() => ApplicationStore.openMessage()}
                         src={LogoffIcon} />
                     <span>Log off</span>
                 </MenuBottomButton>

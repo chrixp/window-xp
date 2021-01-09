@@ -22,7 +22,6 @@ const DesktopIconContainer = styled.div`
 const DesktopIconImage = styled.img`
     margin-bottom: 0.5em;
     object-fit: contain;
-    height: 50px;
     width: ${props => props.width ? props.width : '40'}px;
     opacity: ${props => props.clicked === true ? 0.5 : 1};
 `
@@ -40,7 +39,7 @@ const DesktopIcon = observer((props) => {
     return (
         <Draggable disabled={isMobile()}>
             <DesktopIconContainer x={props.x} y={props.y} onClick={props.onClick}>
-            <DesktopIconImage width={props.width} clicked={props.clicked} src={imageLink(props.img)} alt="" />
+            <DesktopIconImage width={props.iconWidth} clicked={props.clicked} src={imageLink(props.img)} alt="" />
             <DesktopIconDesc clicked={props.clicked}>{props.desc}</DesktopIconDesc>
             </DesktopIconContainer>
         </Draggable>
