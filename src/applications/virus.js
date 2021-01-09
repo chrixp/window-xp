@@ -79,12 +79,12 @@ const Virus = observer(() => {
     }
 
     const generateViruses = () => {
-        if(viruses.length < 40) {
+        if(viruses.length < 35) {
             setTimeout(() => {
                 const newViruses = [...viruses]
                 newViruses.push({ x: getRandomInteger(1,100), y: getRandomInteger(1, 100)})
                 setViruses(newViruses) 
-            }, 140)
+            }, 100)
         } else {
             setDone(true)
             runVirus()
