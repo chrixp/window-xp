@@ -21,6 +21,9 @@ const IFrame = (props) => {
         const container = document.getElementsByClassName(props.id)[0]
         container.style.cursor = `url(${LoadingCursor}), wait`
 
+        setTimeout(() => {
+            
+        })
         iframe.onload = () => {
             setLoaded(true)
         }

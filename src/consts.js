@@ -120,6 +120,16 @@ const applicationChildren = {
         desc: '12/24/2020',
         type: APP_TYPES.IMAGE
     },
+    baby: {
+        img: 'baby.jpg',
+        desc: '08/7/2008',
+        type: APP_TYPES.IMAGE
+    },
+    newyork: {
+        img: 'newyork.jpg',
+        desc: '11/25/2019',
+        type: APP_TYPES.IMAGE
+    },
     onlyfans: {
         img: 'onlyfans.png',
         desc: 'OnlyFans',
@@ -149,7 +159,7 @@ const baseApplicationState = {
         desc: 'My Pictures',
         y: 200,
         x: 10,
-        children: ['personal'],
+        children: ['baby','newyork','personal'],
         type: APP_TYPES.COMPUTER
     },
     work: {
@@ -157,7 +167,8 @@ const baseApplicationState = {
         desc: 'Work Experience',
         children: ['aws', 'boa', 'squared', 'schwartz'],
         y: 300,
-        x: 2
+        x: 2,
+        type: APP_TYPES.COMPUTER
     },
     paint: {
         img: 'paint-icon.png',

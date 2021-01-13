@@ -12,6 +12,7 @@ import ErrorSound from '../assets/sounds/error.mp3'
 const errorSound = new Audio(ErrorSound);
 const defaultMessage = "You are not authorized to access this content. Please contact admin for more information."
 const oneDeviceMessage = "You are not authorized to use more than 1 application at once on a mobile device. Please use a laptop for full access"
+const bannedApplications = ['spider']
 
 class ApplicationStore {
     // Desktop
@@ -70,6 +71,10 @@ class ApplicationStore {
         this.message = null
     }
 
+    isComputer (key) {
+        return this.applications[key].type === APP_TYPES.COMPUTER
+    }
+
     unclickEverything = () => {
         // Unclick everthing
         Object.keys(this.applications).forEach(key => {
@@ -99,34 +104,75 @@ class ApplicationStore {
         this.applications[key].clicked = !oldClicked
     }
     
+    setNextAndBack (key) {
+        this.back = this.chosenKey
+        this.next = null
+        this.chosenKey = key
+    }
+
+    handleOpenComputer (key) {
+        if(!this.applications['computer'].open) {
+            if(this.shouldOpenApplicationOpenMobile(key)) {
+                this.applications['computer'].open = true
+                this.setNextAndBack(key)
+            } else {
+                return
+            }
+        } else {
+            // If computer is already open, reset the next and back button
+            // and bring the computer to front
+            this.setNextAndBack(key)
+            this.unminimizeApplication('computer')
+        }
+            
+      
+    }
+
+    handleOpenDefault (key) {
+        // If application is not open, open it
+        // If it is, bring it to front
+        if(!this.applications[key].open) {
+            if(this.shouldOpenApplicationOpenMobile(key)) {
+                this.applications[key].open = true
+            }
+        } else {
+            this.unminimizeApplication(key)
+        }
+    }
+
+    shouldOpenApplicationOpenMobile (key) {
+        if(isMobile()){ 
+            if(this.openApps.length > 0) {
+                this.openMessage(oneDeviceMessage)
+                return false
+            } else if (bannedApplications.includes(key)) {
+                this.openMessage(`You are not allowed to open ${this.applications[key].desc} application on a mobile device. Please use a laptop for access`)
+                return false
+            } else {
+                return true
+            }
+        } else {
+            return true
+        }
+    }
+
     openApplication = (key, reset = false) => {
         if(!reset) {
             this.resetUI()
         }
-        switch(this.applications[key].type) {
+        const application = this.applications[key]
+        switch(application.type) {
             case APP_TYPES.EXTERNAL:
-                window.open(this.applications[key].externalLink)
+                window.open(application.externalLink)
                 break;
             case APP_TYPES.ERROR:
                 this.openMessage()
                 break;
             default:
-                if(this.applications[key].children) {
-                    this.back = this.chosenKey
-                    this.next = null
-                    this.applications['computer'].open = true
-                    this.unminimizeApplication('computer')
-                    this.chosenKey = key
-                } else if(!this.applications[key].open) {
-                    if(isMobile() && this.openApps.length > 0) {
-                        this.openMessage(oneDeviceMessage)
-                    } else {
-                        this.applications[key].open = true
-                    }
-                } 
-
-                if(this.applications[key].open === true) {
-                    this.unminimizeApplication(key)           
+                if(this.isComputer(key)) {
+                    this.handleOpenComputer(key)
+                } else {
+                    this.handleOpenDefault(key)
                 }
         }
     }
@@ -180,7 +226,7 @@ class ApplicationStore {
     }
 
     get files () {
-        return this.mappableApps.filter(application => application.children)
+        return this.mappableApps.filter(application => application.type === APP_TYPES.COMPUTER)
     }
 
     get chosenFile () {
