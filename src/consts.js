@@ -80,7 +80,7 @@ const applicationChildren = {
         type: APP_TYPES.EXTERNAL
     },
     insta: {
-        img: 'insta.jpeg',
+        img: 'instagram.png',
         desc: 'Instagram',
         externalLink: 'https://www.instagram.com/nphan108/',
         type: APP_TYPES.EXTERNAL
