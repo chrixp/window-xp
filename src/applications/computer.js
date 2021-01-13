@@ -4,7 +4,6 @@ import ComputerContent from '@components/computer-content'
 import imageLink from '@src/image-link'
 import { useStore } from '@src/context'
 import { observer} from 'mobx-react-lite'
-import Application from '../components/application'
 
 const TopBarContainer = styled.div`
     display: flex;
