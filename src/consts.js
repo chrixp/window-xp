@@ -80,7 +80,7 @@ const applicationChildren = {
         type: APP_TYPES.EXTERNAL
     },
     insta: {
-        img: 'insta.jpeg',
+        img: 'instagram.png',
         desc: 'Instagram',
         externalLink: 'https://www.instagram.com/nphan108/',
         type: APP_TYPES.EXTERNAL
@@ -117,7 +117,17 @@ const applicationChildren = {
     },
     personal: {
         img: 'personal.jpg',
-        desc: 'The Only Good Picture Of Me',
+        desc: '12/24/2020',
+        type: APP_TYPES.IMAGE
+    },
+    baby: {
+        img: 'baby.jpg',
+        desc: '08/7/2008',
+        type: APP_TYPES.IMAGE
+    },
+    newyork: {
+        img: 'newyork.jpg',
+        desc: '11/25/2019',
         type: APP_TYPES.IMAGE
     },
     onlyfans: {
@@ -149,7 +159,7 @@ const baseApplicationState = {
         desc: 'My Pictures',
         y: 200,
         x: 10,
-        children: ['personal'],
+        children: ['baby','newyork','personal'],
         type: APP_TYPES.COMPUTER
     },
     work: {
@@ -157,7 +167,8 @@ const baseApplicationState = {
         desc: 'Work Experience',
         children: ['aws', 'boa', 'squared', 'schwartz'],
         y: 300,
-        x: 2
+        x: 2,
+        type: APP_TYPES.COMPUTER
     },
     paint: {
         img: 'paint-icon.png',
@@ -199,9 +210,10 @@ const baseApplicationState = {
         height: 530,
         x: 120,
         y: 490,
-        desc: "Spider Solitare",
+        desc: "Spider",
         type: APP_TYPES.WIDGET
     },
+    /*
     mine: {
         img: 'mine.png',
         link: "https://mines.now.sh/",
@@ -212,7 +224,7 @@ const baseApplicationState = {
         y: 500,
         desc: "Minesweeper",
         type: APP_TYPES.WIDGET
-    },
+    },*/
     virus: {
         img: 'virus.png',
         desc: 'VIRUS !!! DO NOT CLICK!!!!',

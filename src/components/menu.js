@@ -108,7 +108,6 @@ const MenuItemImage = styled.img`
 const Menu = observer(() => {
     const { ApplicationStore } = useStore()
     const logOff = () => {
-        console.log("CALLED")
         window.location.href = `${window.location.origin}/authenticate` 
     }
 

@@ -10,6 +10,7 @@ import Computer from '@applications/computer'
 import Virus from '@applications/virus'
 import Notepad from '@applications/notepad'
 import Image from '@applications/image'
+import IFrame from '@applications/iframe'
 import { APP_TYPES } from '@src/consts'
 import "xp.css/dist/XP.css"
 import "./draggable.css"
@@ -61,12 +62,6 @@ const ApplicationContainer = styled.div`
         }
     }
 `
-const IFrame = styled.iframe`
-    width: calc(100% - 7px);
-    height: 100%;
-    border: none;
-    margin: 0 3px;
-`
 
 const Application = observer((props) => {    
     const { width, height } = props
@@ -79,7 +74,7 @@ const Application = observer((props) => {
     const renderApplication = () => {
         switch (props.type) {
             case APP_TYPES.WIDGET:
-                return <IFrame src={props.link} />
+                return <IFrame id={props.id} src={props.link} />
             case APP_TYPES.IMAGE:
                 return <Image {...props} />
             case APP_TYPES.NOTEPAD:
