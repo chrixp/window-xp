@@ -90,7 +90,7 @@ const Computer =  observer(() => {
             rotated: true,
             arrow: true,
             clickable: ApplicationStore.next !== null,
-            onClick: Application.back !== null ? () => ApplicationStore.goNext() : null
+            onClick: ApplicationStore.next !== null ? () => ApplicationStore.goNext() : null
         },
         {
             img: 'search.png',

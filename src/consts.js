@@ -117,7 +117,7 @@ const applicationChildren = {
     },
     personal: {
         img: 'personal.jpg',
-        desc: 'The Only Good Picture Of Me',
+        desc: '12/24/2020',
         type: APP_TYPES.IMAGE
     },
     onlyfans: {
@@ -199,9 +199,10 @@ const baseApplicationState = {
         height: 530,
         x: 120,
         y: 490,
-        desc: "Spider Solitare",
+        desc: "Spider",
         type: APP_TYPES.WIDGET
     },
+    /*
     mine: {
         img: 'mine.png',
         link: "https://mines.now.sh/",
@@ -212,7 +213,7 @@ const baseApplicationState = {
         y: 500,
         desc: "Minesweeper",
         type: APP_TYPES.WIDGET
-    },
+    },*/
     virus: {
         img: 'virus.png',
         desc: 'VIRUS !!! DO NOT CLICK!!!!',
