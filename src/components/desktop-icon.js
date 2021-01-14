@@ -15,6 +15,7 @@ const DesktopIconContainer = styled.div`
     align-items: center;
     z-index: 2;
     color: white;
+    max-width: 90px;
     &:hover {
         cursor: pointer;
     }
@@ -27,6 +28,7 @@ const DesktopIconImage = styled.img`
 `
 
 const DesktopIconDesc = styled.p`
+    text-align: center;
     margin: 0;
     padding: 0.2em;
     font-size: 11px;

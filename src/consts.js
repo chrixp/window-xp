@@ -5,7 +5,8 @@ export const APP_TYPES = {
     COMPUTER: 'computer',
     EXTERNAL: 'external',
     NOTEPAD: 'notepad',
-    VIRUS: 'virus'
+    VIRUS: 'virus',
+    YAHOO: 'yahoo'
 }
 
 export const menuApplications = [
@@ -184,7 +185,7 @@ const baseApplicationState = {
         desc: 'Old Website',
         iconWidth: 60,
         y: 1,
-        x: 110,
+        x: 120,
         type: APP_TYPES.WIDGET
     },
     resume : {
@@ -208,7 +209,7 @@ const baseApplicationState = {
         link: "https://www.squidbyte.com/games/spidersolitairewindowsxp/",
         width: 800,
         height: 530,
-        x: 120,
+        x: 130,
         y: 490,
         desc: "Spider",
         type: APP_TYPES.WIDGET
@@ -229,7 +230,7 @@ const baseApplicationState = {
         img: 'virus.png',
         desc: 'VIRUS !!! DO NOT CLICK!!!!',
         y: 300,
-        x: 130,
+        x: 115,
         type: APP_TYPES.VIRUS
     },
     social: {
@@ -240,7 +241,16 @@ const baseApplicationState = {
         x: 115,
         type: APP_TYPES.COMPUTER
     },
-
+    yahoo: {
+        img: 'yahoo.png',
+        width: 300,
+        height: 500,
+        x: 18,
+        y: 485,
+        desc: "Yahoo",
+        bars: ['Messenger', 'Help'],
+        type: APP_TYPES.YAHOO
+    },
     ...applicationChildren
 }
 
