@@ -11,13 +11,16 @@ const TaskBarIconText = styled.span`
     font-size: 13px;
     letter-spacing: 0.7px;
     margin-left: 5px;
+    white-space: pre;
+}
 `
 const TaskBarIconContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    width: 140px;
+    overflow: hidden;
+    width: 150px;
     color: rgb(255, 255, 255);
     margin-top: 2px;
     padding: 0 8px;

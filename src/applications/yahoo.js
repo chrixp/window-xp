@@ -83,9 +83,6 @@ const YahooMessenger = () => {
 
     const logIn = () => {
         setAuthenticated(true)
-        setTimeout(() => {
-            setAuthenticated(false)
-        }, 5000)
     }
 
     const logOut = () => {

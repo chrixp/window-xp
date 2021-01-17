@@ -251,6 +251,14 @@ const baseApplicationState = {
         bars: ['Messenger', 'Help'],
         type: APP_TYPES.YAHOO
     },
+    js: {
+        img: 'js.png',
+        link: 'https://determined-davinci-31d70d.netlify.app/',
+        desc: 'How Fast Can You JS',
+        y: 570,
+        x: 1,
+        type: APP_TYPES.WIDGET
+    },
     ...applicationChildren
 }
 
