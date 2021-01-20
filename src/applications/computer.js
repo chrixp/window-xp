@@ -4,6 +4,7 @@ import ComputerContent from '@components/computer-content'
 import imageLink from '@src/image-link'
 import { useStore } from '@src/context'
 import { observer} from 'mobx-react-lite'
+import { v4 } from 'uuid'
 
 const TopBarContainer = styled.div`
     display: flex;
@@ -114,14 +115,12 @@ const Computer =  observer(() => {
     return (
         <ComputerContainer>
             <TopBarContainer>
-                <TopBarContainer>
-                    {topBarIcons.map(icon => (
-                        <TopBarIconContainer {...icon}>
-                            <img src={imageLink(icon.img)} alt={icon.desc} />
-                            <span>{icon.desc}</span>
-                        </TopBarIconContainer>
-                    ))}
-                </TopBarContainer>
+                {topBarIcons.map(icon => (
+                    <TopBarIconContainer key={v4()} {...icon}>
+                        <img src={imageLink(icon.img)} alt={icon.desc} />
+                        <span>{icon.desc}</span>
+                    </TopBarIconContainer>
+                ))}
             </TopBarContainer>
             <ComputerSearchBar />
             <ComputerContent />

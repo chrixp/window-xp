@@ -6,7 +6,9 @@ export const APP_TYPES = {
     EXTERNAL: 'external',
     NOTEPAD: 'notepad',
     VIRUS: 'virus',
-    YAHOO: 'yahoo'
+    YAHOO: 'yahoo',
+    MINESWEEPER: 'minesweeper',
+    EXPLORER: 'explorer'
 }
 
 export const menuApplications = [
@@ -214,18 +216,6 @@ const baseApplicationState = {
         desc: "Spider",
         type: APP_TYPES.WIDGET
     },
-    /*
-    mine: {
-        img: 'mine.png',
-        link: "https://mines.now.sh/",
-        iconWidth: 30,
-        width: 800,
-        height: 530,
-        x: 5,
-        y: 500,
-        desc: "Minesweeper",
-        type: APP_TYPES.WIDGET
-    },*/
     virus: {
         img: 'virus.png',
         desc: 'VIRUS !!! DO NOT CLICK!!!!',
@@ -255,9 +245,29 @@ const baseApplicationState = {
         img: 'js.png',
         link: 'https://determined-davinci-31d70d.netlify.app/',
         desc: 'How Fast Can You JS',
-        y: 570,
-        x: 1,
+        y: 1,
+        x: 220,
         type: APP_TYPES.WIDGET
+    },
+    mine: {
+        img: 'mine.png',
+        bars: ['Game', 'Help'],
+        iconWidth: 30,
+        width: 307.5,
+        height: 410,
+        x: 220,
+        y: 120,
+        desc: "Minesweeper",
+        type: APP_TYPES.MINESWEEPER
+    },
+    internet: {
+        img: 'internet.png',
+        bars: ['File','Edit','View','Favorites','Tools','Help'],
+        x: 215,
+        y: 205,
+        desc: 'Internet Explorer',
+        iconWidth: 30,
+        type: APP_TYPES.EXPLORER
     },
     ...applicationChildren
 }
