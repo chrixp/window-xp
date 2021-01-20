@@ -16,6 +16,7 @@ import Minesweeper from '@applications/minesweeper'
 import { APP_TYPES } from '@src/consts'
 import "xp.css/dist/XP.css"
 import "./draggable.css"
+import Explorer from '../applications/explorer'
 
 const ApplicationContainer = styled.div`
     display: ${props => props.minimized === true ? 'none' : 'flex'};
@@ -89,6 +90,8 @@ const Application = observer((props) => {
                 return <Yahoo />
             case APP_TYPES.MINESWEEPER:
                 return <Minesweeper />
+            case APP_TYPES.EXPLORER:
+                return <Explorer />
             default:
                 return null
             }

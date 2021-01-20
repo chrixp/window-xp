@@ -7,7 +7,8 @@ export const APP_TYPES = {
     NOTEPAD: 'notepad',
     VIRUS: 'virus',
     YAHOO: 'yahoo',
-    MINESWEEPER: 'minesweeper'
+    MINESWEEPER: 'minesweeper',
+    EXPLORER: 'explorer'
 }
 
 export const menuApplications = [
@@ -258,6 +259,15 @@ const baseApplicationState = {
         y: 120,
         desc: "Minesweeper",
         type: APP_TYPES.MINESWEEPER
+    },
+    internet: {
+        img: 'internet.png',
+        bars: ['File','Edit','View','Favorites','Tools','Help'],
+        x: 215,
+        y: 205,
+        desc: 'Internet Explorer',
+        iconWidth: 30,
+        type: APP_TYPES.EXPLORER
     },
     ...applicationChildren
 }

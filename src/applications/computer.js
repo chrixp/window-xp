@@ -115,14 +115,12 @@ const Computer =  observer(() => {
     return (
         <ComputerContainer>
             <TopBarContainer>
-                <TopBarContainer>
-                    {topBarIcons.map(icon => (
-                        <TopBarIconContainer key={v4()} {...icon}>
-                            <img src={imageLink(icon.img)} alt={icon.desc} />
-                            <span>{icon.desc}</span>
-                        </TopBarIconContainer>
-                    ))}
-                </TopBarContainer>
+                {topBarIcons.map(icon => (
+                    <TopBarIconContainer key={v4()} {...icon}>
+                        <img src={imageLink(icon.img)} alt={icon.desc} />
+                        <span>{icon.desc}</span>
+                    </TopBarIconContainer>
+                ))}
             </TopBarContainer>
             <ComputerSearchBar />
             <ComputerContent />
