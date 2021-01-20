@@ -12,6 +12,7 @@ import Notepad from '@applications/notepad'
 import Image from '@applications/image'
 import IFrame from '@applications/iframe'
 import Yahoo from '@applications/yahoo'
+import Minesweeper from '@applications/minesweeper'
 import { APP_TYPES } from '@src/consts'
 import "xp.css/dist/XP.css"
 import "./draggable.css"
@@ -86,6 +87,8 @@ const Application = observer((props) => {
                 return <Computer />
             case APP_TYPES.YAHOO:
                 return <Yahoo />
+            case APP_TYPES.MINESWEEPER:
+                return <Minesweeper />
             default:
                 return null
             }
