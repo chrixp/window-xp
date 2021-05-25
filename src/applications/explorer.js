@@ -168,8 +168,8 @@ const Explorer = () => {
         clickable: true
     }
   ]
-  const [search, setSearch] = useState('https://chrisphan.net')
-  const [query, setQuery] = useState('https://chrisphan.net')
+  const [search, setSearch] = useState('https://crispy.live')
+  const [query, setQuery] = useState('https://crispy.live')
 
   const startSearching = () => {
     setQuery(search)
